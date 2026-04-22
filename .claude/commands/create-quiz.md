@@ -22,8 +22,9 @@ The quiz is a self-contained HTML page that uses the shared design system and th
 3. **Check existing quizzes** in `exams/<exam>/quizzes/` for the same unit so you can vary the questions from prior quizzes on that topic.
 
 4. **Generate the quiz** at true AP exam level.
-   - **MCQs (5 total, A–D each).** For history: build around 2–4 stimuli (primary excerpts, political-cartoon descriptions, historian interpretations, charts) with 1–3 linked questions per stimulus — this mirrors the real exam. For physics: include a brief scenario, relevant given values, and where helpful a simple described diagram; distractors should target common reasoning errors (wrong sign, wrong axis, confused formula).
-   - **FRQs (1–2).** History: SAQ (three parts a/b/c) or short DBQ-style prompt with 2–3 provided excerpts. Physics: multi-part problem (a, b, c…) requiring derivation and calculus where the unit demands it.
+   - **Coverage first.** The quiz should comprehensively cover the unit's **Key concepts** in `syllabus.md`. Every major concept listed should be touched by at least one MCQ or FRQ sub-part. Prefer breadth over depth: do not burn three MCQs on one topic while leaving four other major topics untested.
+   - **MCQs (A–D each), sized to unit scope.** Narrow units (APUSH Unit 1; a single physics topic) → ~8–10 MCQs. Dense units (APUSH Units 2–6, 8, 9) → ~15–20 MCQs across 5–7 stimulus groups + a few standalones. The largest unit (APUSH Unit 7, 1890–1945) → ~22–28 MCQs. For history: build around multiple stimuli (primary excerpts, political-cartoon descriptions, historian interpretations, charts) with 2–4 linked questions per stimulus — this mirrors the real exam — plus standalone MCQs to pick up concepts the stimuli don't reach. For physics: include brief scenarios, relevant given values, and where helpful a described diagram; distractors should target common reasoning errors (wrong sign, wrong axis, confused formula).
+   - **FRQs (2–3).** History: one SAQ with parts a/b/c plus one DBQ or LEQ-style prompt (provide 3–7 short excerpts for a DBQ). For dense units, consider a second SAQ on a different sub-period so the FRQ portion also broadens coverage. Physics: 1–2 multi-part problems requiring derivation and calculus where the unit demands it.
    - **Difficulty:** match the real exam. Plausible distractors, not trick questions. Do not soften the language or give away the answer.
 
 5. **Author the HTML** using the template below. Save to `exams/<exam>/quizzes/unit-<N>-<slug>-<YYYY-MM-DD>.html`. Use today's date. If the filename already exists, append `-v2`, `-v3`, etc.
@@ -59,8 +60,8 @@ The quiz is a self-contained HTML page that uses the shared design system and th
         <h1>[Quiz title]</h1>
         <p class="lede">[1–2 sentence scope statement.]</p>
         <div class="hero-meta">
-          <span>5 multiple choice</span>
-          <span>1–2 free response</span>
+          <span>[N] multiple choice</span>
+          <span>[M] free response</span>
           <span>AP-level</span>
         </div>
       </header>
