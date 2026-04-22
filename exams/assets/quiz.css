@@ -1,0 +1,330 @@
+/* Quiz layout — layered on top of styles.css. */
+
+.quiz {
+  margin-block: 2.5rem 1rem;
+}
+
+.stimulus-group {
+  margin-block: 1.75rem;
+  padding: 1.25rem 1.35rem 1.4rem;
+  background: var(--accent-soft);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--accent);
+  border-radius: var(--radius);
+}
+
+.stimulus-group > .question.mcq {
+  background: var(--surface);
+}
+
+.stimulus {
+  margin: 0 0 1.2rem;
+  padding: 0.75rem 1rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  color: var(--text);
+  font-family: var(--font-serif);
+  font-size: 1rem;
+  line-height: 1.55;
+}
+
+.stimulus p {
+  margin: 0 0 0.55em;
+  max-width: none;
+}
+
+.stimulus p:last-of-type {
+  margin-bottom: 0.35em;
+}
+
+.stimulus cite {
+  display: block;
+  margin-top: 0.5em;
+  font-style: normal;
+  font-family: var(--font-sans);
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  letter-spacing: 0.01em;
+}
+
+/* Question cards */
+
+.question {
+  position: relative;
+  margin-block: 1.1rem;
+  padding: 1.15rem 1.3rem 1.25rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-sm);
+}
+
+.question + .question {
+  margin-top: 1rem;
+}
+
+.question .qnum {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent);
+  font-weight: 700;
+  margin-bottom: 0.35em;
+}
+
+.question .prompt {
+  margin: 0 0 0.9em;
+  font-size: 1.02rem;
+  max-width: none;
+  color: var(--text);
+}
+
+.question .prompt strong {
+  color: var(--accent);
+}
+
+/* MCQ options */
+
+.options {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 0.9em;
+  display: grid;
+  gap: 0.5rem;
+  counter-reset: opt;
+}
+
+.options li {
+  --label-bg: var(--accent-soft);
+  --label-color: var(--accent);
+  position: relative;
+  padding: 0.7rem 0.95rem 0.7rem 3rem;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  font-size: 0.96rem;
+  color: var(--text);
+  transition:
+    background 0.12s ease,
+    border-color 0.12s ease,
+    transform 0.08s ease;
+}
+
+.options li::before {
+  content: attr(data-letter);
+  position: absolute;
+  left: 0.6rem;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 1.85rem;
+  height: 1.85rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: var(--label-bg);
+  color: var(--label-color);
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+.options li:hover {
+  border-color: var(--border-strong);
+  background: var(--accent-soft);
+}
+
+.options li.selected {
+  border-color: var(--accent);
+  background: var(--accent-soft);
+}
+
+.options li.checked {
+  cursor: default;
+}
+
+.options li.correct {
+  --label-bg: #1b7f3b;
+  --label-color: #ffffff;
+  border-color: #1b7f3b;
+  background: rgba(27, 127, 59, 0.09);
+}
+
+.options li.incorrect {
+  --label-bg: #a03232;
+  --label-color: #ffffff;
+  border-color: #a03232;
+  background: rgba(160, 50, 50, 0.08);
+}
+
+/* Buttons */
+
+.question button {
+  appearance: none;
+  border: 1px solid var(--accent);
+  background: var(--accent);
+  color: #fff;
+  padding: 0.5rem 1rem;
+  border-radius: 999px;
+  font-family: var(--font-sans);
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  cursor: pointer;
+  transition:
+    background 0.12s ease,
+    transform 0.06s ease,
+    box-shadow 0.12s ease;
+}
+
+.question button:hover {
+  box-shadow: 0 0 0 4px var(--accent-ring);
+}
+
+.question button:active {
+  transform: translateY(1px);
+}
+
+.question button:disabled {
+  opacity: 0.55;
+  cursor: default;
+  box-shadow: none;
+}
+
+.question button[hidden] {
+  display: none;
+}
+
+/* Explanation */
+
+.explanation,
+.model-answer {
+  margin-top: 1rem;
+  padding: 0.95rem 1.1rem;
+  background: var(--accent-soft);
+  border-left: 3px solid var(--accent);
+  border-radius: var(--radius-sm);
+  font-size: 0.95rem;
+}
+
+.explanation p,
+.model-answer p {
+  margin: 0.35em 0;
+  max-width: none;
+}
+
+.explanation p strong,
+.model-answer p strong {
+  color: var(--accent);
+}
+
+.model-answer h3 {
+  margin: 0 0 0.3em;
+  font-size: 0.82rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent);
+  font-family: var(--font-sans);
+  font-weight: 700;
+}
+
+.model-answer ul {
+  margin: 0.2em 0 0.8em 1.1em;
+  padding: 0;
+}
+
+.model-answer ul li {
+  margin-block: 0.2em;
+}
+
+/* FRQ */
+
+.question.frq textarea {
+  width: 100%;
+  min-height: 8.5rem;
+  padding: 0.8rem 0.95rem;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  font-family: var(--font-serif);
+  font-size: 1rem;
+  line-height: 1.55;
+  color: var(--text);
+  resize: vertical;
+  margin-bottom: 0.9em;
+}
+
+.question.frq textarea:focus-visible {
+  outline: 2px solid var(--accent-ring);
+  outline-offset: 1px;
+  border-color: var(--accent);
+}
+
+/* Small result badge under a question after checking */
+
+.question .result {
+  display: inline-block;
+  margin-left: 0.7em;
+  padding: 0.15rem 0.65rem;
+  border-radius: 999px;
+  font-size: 0.76rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.question .result.ok {
+  background: rgba(27, 127, 59, 0.14);
+  color: #1b7f3b;
+}
+
+.question .result.no {
+  background: rgba(160, 50, 50, 0.12);
+  color: #a03232;
+}
+
+@media (max-width: 640px) {
+  .question {
+    padding: 1rem 1.05rem 1.1rem;
+  }
+
+  .stimulus-group {
+    padding: 1rem 1.05rem 1.1rem;
+  }
+
+  .options li {
+    padding-left: 2.75rem;
+    font-size: 0.93rem;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  .options li.correct {
+    --label-bg: #3dd57a;
+    --label-color: #0b1f12;
+    border-color: #3dd57a;
+    background: rgba(61, 213, 122, 0.12);
+  }
+
+  .options li.incorrect {
+    --label-bg: #f07979;
+    --label-color: #2a0e0e;
+    border-color: #f07979;
+    background: rgba(240, 121, 121, 0.1);
+  }
+
+  .question .result.ok {
+    background: rgba(61, 213, 122, 0.18);
+    color: #3dd57a;
+  }
+
+  .question .result.no {
+    background: rgba(240, 121, 121, 0.16);
+    color: #f07979;
+  }
+}

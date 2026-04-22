@@ -423,3 +423,8 @@ pyrightconfig.json
 .worktrees/
 .gitworktree/
 .gitworktrees/
+
+
+# Local MCP / browser cache and ad-hoc screenshots
+.playwright-mcp/
+*-desktop.png
